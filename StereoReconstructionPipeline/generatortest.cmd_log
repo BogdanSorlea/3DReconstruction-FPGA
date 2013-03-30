@@ -1,0 +1,2 @@
+xst -intstyle ise -ifn "C:/Users/Bogdan/Desktop/D3Reconstruction/StereoReconstructionPipeline/generatortest.xst" -ofn "C:/Users/Bogdan/Desktop/D3Reconstruction/StereoReconstructionPipeline/generatortest.syr" 
+xst -intstyle ise -ifn "C:/Users/Bogdan/Desktop/D3Reconstruction/StereoReconstructionPipeline/generatortest.xst" -ofn "C:/Users/Bogdan/Desktop/D3Reconstruction/StereoReconstructionPipeline/generatortest.syr" 

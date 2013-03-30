@@ -1,0 +1,3 @@
+work	"comparator.vhd"
+work	"comparator_block.vhd"
+work	"flipflop.vhd"

@@ -1,0 +1,7 @@
+vhdl work "flipflop.vhd"
+vhdl work "adder2.vhd"
+vhdl work "sad.vhd"
+vhdl work "pipeadd3.vhd"
+vhdl work "comparator.vhd"
+vhdl work "adder3.vhd"
+vhdl work "pipeline.vhd"

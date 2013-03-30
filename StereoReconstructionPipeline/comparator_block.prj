@@ -1,0 +1,3 @@
+vhdl work "flipflop.vhd"
+vhdl work "comparator.vhd"
+vhdl work "comparator_block.vhd"

@@ -1,0 +1,24 @@
+Running: E:\Xilinx\ISE_DS\ISE\bin\nt64\unwrapped\fuse.exe -intstyle ise -incremental -lib secureip -o C:/Users/Bogdan/Desktop/D3Reconstruction/StereoReconstructionPipeline/comparator_block_test_isim_beh.exe -prj C:/Users/Bogdan/Desktop/D3Reconstruction/StereoReconstructionPipeline/comparator_block_test_beh.prj work.comparator_block_test 
+ISim M.81d (signature 0x12940baa)
+Number of CPUs detected in this system: 2
+Turning on mult-threading, number of parallel sub-compilation jobs: 4 
+Determining compilation order of HDL files
+Parsing VHDL file "C:/Users/Bogdan/Desktop/D3Reconstruction/StereoReconstructionPipeline/flipflop.vhd" into library work
+Parsing VHDL file "C:/Users/Bogdan/Desktop/D3Reconstruction/StereoReconstructionPipeline/comparator.vhd" into library work
+Parsing VHDL file "C:/Users/Bogdan/Desktop/D3Reconstruction/StereoReconstructionPipeline/comparator_block.vhd" into library work
+Parsing VHDL file "C:/Users/Bogdan/Desktop/D3Reconstruction/StereoReconstructionPipeline/comparator_block_test.vhd" into library work
+Starting static elaboration
+Completed static elaboration
+Using precompiled package standard from library std
+Using precompiled package std_logic_1164 from library ieee
+Using precompiled package numeric_std from library ieee
+Compiling architecture behavioral of entity flipflop [\flipflop(12)\]
+Compiling architecture behavioral of entity comparator [\comparator(12)\]
+Compiling architecture behavioral of entity comparator_block [\comparator_block(10,12,7)\]
+Compiling architecture behavior of entity comparator_block_test
+Time Resolution for simulation is 1ps.
+Waiting for 1 sub-compilation(s) to finish...
+Compiled 10 VHDL Units
+Built simulation executable C:/Users/Bogdan/Desktop/D3Reconstruction/StereoReconstructionPipeline/comparator_block_test_isim_beh.exe
+Fuse Memory Usage: 18148 KB
+Fuse CPU Usage: 218 ms

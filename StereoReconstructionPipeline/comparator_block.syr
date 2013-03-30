@@ -1,0 +1,559 @@
+Release 12.4 - xst M.81d (nt64)
+Copyright (c) 1995-2010 Xilinx, Inc.  All rights reserved.
+--> Parameter TMPDIR set to xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.12 secs
+ 
+--> Parameter xsthdpdir set to xst
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.12 secs
+ 
+--> Reading design: comparator_block.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Parsing
+  3) HDL Elaboration
+  4) HDL Synthesis
+       4.1) HDL Synthesis Report
+  5) Advanced HDL Synthesis
+       5.1) Advanced HDL Synthesis Report
+  6) Low Level Synthesis
+  7) Partition Report
+  8) Design Summary
+       8.1) Primitive and Black Box Usage
+       8.2) Device utilization summary
+       8.3) Partition Resource Summary
+       8.4) Timing Report
+            8.4.1) Clock Information
+            8.4.2) Asynchronous Control Signals Information
+            8.4.3) Timing Summary
+            8.4.4) Timing Details
+            8.4.5) Cross Clock Domains Report
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "comparator_block.prj"
+Input Format                       : mixed
+Ignore Synthesis Constraint File   : NO
+
+---- Target Parameters
+Output File Name                   : "comparator_block"
+Output Format                      : NGC
+Target Device                      : xc6slx45-3-csg324
+
+---- Source Options
+Top Module Name                    : comparator_block
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Auto
+Safe Implementation                : No
+FSM Style                          : LUT
+RAM Extraction                     : Yes
+RAM Style                          : Auto
+ROM Extraction                     : Yes
+Shift Register Extraction          : YES
+ROM Style                          : Auto
+Resource Sharing                   : YES
+Asynchronous To Synchronous        : NO
+Shift Register Minimum Size        : 2
+Use DSP Block                      : Auto
+Automatic Register Balancing       : No
+
+---- Target Options
+LUT Combining                      : Auto
+Reduce Control Sets                : Auto
+Add IO Buffers                     : YES
+Global Maximum Fanout              : 100000
+Add Generic Clock Buffer(BUFG)     : 16
+Register Duplication               : YES
+Optimize Instantiated Primitives   : NO
+Use Clock Enable                   : Auto
+Use Synchronous Set                : Auto
+Use Synchronous Reset              : Auto
+Pack IO Registers into IOBs        : Auto
+Equivalent register Removal        : YES
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 1
+Power Reduction                    : NO
+Keep Hierarchy                     : No
+Netlist Hierarchy                  : As_Optimized
+RTL Output                         : Yes
+Global Optimization                : AllClockNets
+Read Cores                         : YES
+Write Timing Constraints           : NO
+Cross Clock Analysis               : NO
+Hierarchy Separator                : /
+Bus Delimiter                      : <>
+Case Specifier                     : Maintain
+Slice Utilization Ratio            : 100
+BRAM Utilization Ratio             : 100
+DSP48 Utilization Ratio            : 100
+Auto BRAM Packing                  : NO
+Slice Utilization Ratio Delta      : 5
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Parsing                                  *
+=========================================================================
+Parsing VHDL file "\Users\Bogdan\Desktop\D3Reconstruction\StereoReconstructionPipeline\flipflop.vhd" into library work
+Parsing entity <flipflop>.
+Parsing architecture <Behavioral> of entity <flipflop>.
+Parsing VHDL file "\Users\Bogdan\Desktop\D3Reconstruction\StereoReconstructionPipeline\comparator.vhd" into library work
+Parsing entity <comparator>.
+Parsing architecture <Behavioral> of entity <comparator>.
+Parsing VHDL file "\Users\Bogdan\Desktop\D3Reconstruction\StereoReconstructionPipeline\comparator_block.vhd" into library work
+Parsing entity <comparator_block>.
+Parsing architecture <Behavioral> of entity <comparator_block>.
+
+=========================================================================
+*                            HDL Elaboration                            *
+=========================================================================
+
+Elaborating entity <comparator_block> (architecture <Behavioral>) with generics from library <work>.
+
+Elaborating entity <flipflop> (architecture <Behavioral>) with generics from library <work>.
+
+Elaborating entity <comparator> (architecture <Behavioral>) with generics from library <work>.
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Synthesizing Unit <comparator_block>.
+    Related source file is "/users/bogdan/desktop/d3reconstruction/stereoreconstructionpipeline/comparator_block.vhd".
+        DR = 100
+        INPUT_SIZE = 12
+        INDEX_SIZE = 7
+INFO:Xst:3010 - "/users/bogdan/desktop/d3reconstruction/stereoreconstructionpipeline/comparator_block.vhd" line 109: Output port <result> of the instance <BLOCK_GENERATE[49].COMPARATOR_COLx> is unconnected or connected to loadless signal.
+    Summary:
+	no macro.
+Unit <comparator_block> synthesized.
+
+Synthesizing Unit <flipflop>.
+    Related source file is "/users/bogdan/desktop/d3reconstruction/stereoreconstructionpipeline/flipflop.vhd".
+        N = 12
+    Found 12-bit register for signal <q>.
+    Summary:
+	inferred  12 D-type flip-flop(s).
+Unit <flipflop> synthesized.
+
+Synthesizing Unit <comparator>.
+    Related source file is "/users/bogdan/desktop/d3reconstruction/stereoreconstructionpipeline/comparator.vhd".
+        OPERAND_SIZE = 12
+    Found 7-bit register for signal <index>.
+    Found 12-bit register for signal <result>.
+    Found 12-bit comparator greater for signal <operandZ[11]_operandA[11]_LessThan_1_o> created at line 55
+    Summary:
+	inferred  19 D-type flip-flop(s).
+	inferred   1 Comparator(s).
+	inferred   2 Multiplexer(s).
+Unit <comparator> synthesized.
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# Registers                                            : 199
+ 12-bit register                                       : 100
+ 7-bit register                                        : 99
+# Comparators                                          : 99
+ 12-bit comparator greater                             : 99
+# Multiplexers                                         : 198
+ 12-bit 2-to-1 multiplexer                             : 99
+ 7-bit 2-to-1 multiplexer                              : 99
+
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# Registers                                            : 1893
+ Flip-Flops                                            : 1893
+# Comparators                                          : 99
+ 12-bit comparator greater                             : 99
+# Multiplexers                                         : 198
+ 12-bit 2-to-1 multiplexer                             : 99
+ 7-bit 2-to-1 multiplexer                              : 99
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+
+Optimizing unit <comparator_block> ...
+
+Optimizing unit <flipflop> ...
+
+Optimizing unit <comparator> ...
+WARNING:Xst:1710 - FF/Latch <BLOCK_GENERATE[3].COMPARATOR_COLx/index_5> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[3].COMPARATOR_COLx/index_6> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[4].COMPARATOR_PREV/index_4> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[4].COMPARATOR_PREV/index_5> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[4].COMPARATOR_PREV/index_6> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[4].COMPARATOR_COLx/index_4> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[4].COMPARATOR_COLx/index_5> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[4].COMPARATOR_COLx/index_6> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[5].COMPARATOR_PREV/index_4> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[5].COMPARATOR_PREV/index_5> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[5].COMPARATOR_PREV/index_6> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[5].COMPARATOR_COLx/index_4> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[5].COMPARATOR_COLx/index_5> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[5].COMPARATOR_COLx/index_6> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[6].COMPARATOR_PREV/index_4> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[6].COMPARATOR_PREV/index_5> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[6].COMPARATOR_PREV/index_6> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[6].COMPARATOR_COLx/index_4> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[6].COMPARATOR_COLx/index_5> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[6].COMPARATOR_COLx/index_6> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[7].COMPARATOR_PREV/index_4> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[7].COMPARATOR_PREV/index_5> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[7].COMPARATOR_PREV/index_6> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[7].COMPARATOR_COLx/index_4> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[7].COMPARATOR_COLx/index_5> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[7].COMPARATOR_COLx/index_6> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[8].COMPARATOR_PREV/index_5> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[8].COMPARATOR_PREV/index_6> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[8].COMPARATOR_COLx/index_5> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[8].COMPARATOR_COLx/index_6> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <COMPARATOR_COL0/index_1> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <COMPARATOR_COL0/index_2> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <COMPARATOR_COL0/index_3> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <COMPARATOR_COL0/index_4> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <COMPARATOR_COL0/index_5> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <COMPARATOR_COL0/index_6> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[1].COMPARATOR_PREV/index_2> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[1].COMPARATOR_PREV/index_3> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[1].COMPARATOR_PREV/index_4> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[1].COMPARATOR_PREV/index_5> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[1].COMPARATOR_PREV/index_6> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[1].COMPARATOR_COLx/index_2> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[1].COMPARATOR_COLx/index_3> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[1].COMPARATOR_COLx/index_4> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[1].COMPARATOR_COLx/index_5> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[1].COMPARATOR_COLx/index_6> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[2].COMPARATOR_PREV/index_3> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[2].COMPARATOR_PREV/index_4> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[2].COMPARATOR_PREV/index_5> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[2].COMPARATOR_PREV/index_6> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[2].COMPARATOR_COLx/index_3> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[2].COMPARATOR_COLx/index_4> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[2].COMPARATOR_COLx/index_5> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[2].COMPARATOR_COLx/index_6> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[3].COMPARATOR_PREV/index_3> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[3].COMPARATOR_PREV/index_4> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[3].COMPARATOR_PREV/index_5> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[3].COMPARATOR_PREV/index_6> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[3].COMPARATOR_COLx/index_3> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[3].COMPARATOR_COLx/index_4> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[17].COMPARATOR_PREV/index_6> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[17].COMPARATOR_COLx/index_6> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[18].COMPARATOR_PREV/index_6> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[18].COMPARATOR_COLx/index_6> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[19].COMPARATOR_PREV/index_6> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[19].COMPARATOR_COLx/index_6> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[20].COMPARATOR_PREV/index_6> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[20].COMPARATOR_COLx/index_6> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[21].COMPARATOR_PREV/index_6> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[21].COMPARATOR_COLx/index_6> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[22].COMPARATOR_PREV/index_6> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[22].COMPARATOR_COLx/index_6> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[23].COMPARATOR_PREV/index_6> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[23].COMPARATOR_COLx/index_6> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[24].COMPARATOR_PREV/index_6> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[24].COMPARATOR_COLx/index_6> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[25].COMPARATOR_PREV/index_6> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[25].COMPARATOR_COLx/index_6> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[26].COMPARATOR_PREV/index_6> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[26].COMPARATOR_COLx/index_6> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[27].COMPARATOR_PREV/index_6> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[27].COMPARATOR_COLx/index_6> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[28].COMPARATOR_PREV/index_6> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[28].COMPARATOR_COLx/index_6> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[29].COMPARATOR_PREV/index_6> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[29].COMPARATOR_COLx/index_6> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[30].COMPARATOR_PREV/index_6> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[30].COMPARATOR_COLx/index_6> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[31].COMPARATOR_PREV/index_6> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[31].COMPARATOR_COLx/index_6> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[9].COMPARATOR_PREV/index_5> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[9].COMPARATOR_PREV/index_6> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[9].COMPARATOR_COLx/index_5> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[9].COMPARATOR_COLx/index_6> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[10].COMPARATOR_PREV/index_5> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[10].COMPARATOR_PREV/index_6> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[10].COMPARATOR_COLx/index_5> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[10].COMPARATOR_COLx/index_6> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[11].COMPARATOR_PREV/index_5> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[11].COMPARATOR_PREV/index_6> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[11].COMPARATOR_COLx/index_5> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[11].COMPARATOR_COLx/index_6> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[12].COMPARATOR_PREV/index_5> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[12].COMPARATOR_PREV/index_6> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[12].COMPARATOR_COLx/index_5> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[12].COMPARATOR_COLx/index_6> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[13].COMPARATOR_PREV/index_5> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[13].COMPARATOR_PREV/index_6> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[13].COMPARATOR_COLx/index_5> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[13].COMPARATOR_COLx/index_6> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[14].COMPARATOR_PREV/index_5> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[14].COMPARATOR_PREV/index_6> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[14].COMPARATOR_COLx/index_5> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[14].COMPARATOR_COLx/index_6> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[15].COMPARATOR_PREV/index_5> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[15].COMPARATOR_PREV/index_6> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[15].COMPARATOR_COLx/index_5> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[15].COMPARATOR_COLx/index_6> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[16].COMPARATOR_PREV/index_6> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BLOCK_GENERATE[16].COMPARATOR_COLx/index_6> (without init value) has a constant value of 0 in block <comparator_block>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:2677 - Node <BLOCK_GENERATE[49].COMPARATOR_COLx/result_11> of sequential type is unconnected in block <comparator_block>.
+WARNING:Xst:2677 - Node <BLOCK_GENERATE[49].COMPARATOR_COLx/result_10> of sequential type is unconnected in block <comparator_block>.
+WARNING:Xst:2677 - Node <BLOCK_GENERATE[49].COMPARATOR_COLx/result_9> of sequential type is unconnected in block <comparator_block>.
+WARNING:Xst:2677 - Node <BLOCK_GENERATE[49].COMPARATOR_COLx/result_8> of sequential type is unconnected in block <comparator_block>.
+WARNING:Xst:2677 - Node <BLOCK_GENERATE[49].COMPARATOR_COLx/result_7> of sequential type is unconnected in block <comparator_block>.
+WARNING:Xst:2677 - Node <BLOCK_GENERATE[49].COMPARATOR_COLx/result_6> of sequential type is unconnected in block <comparator_block>.
+WARNING:Xst:2677 - Node <BLOCK_GENERATE[49].COMPARATOR_COLx/result_5> of sequential type is unconnected in block <comparator_block>.
+WARNING:Xst:2677 - Node <BLOCK_GENERATE[49].COMPARATOR_COLx/result_4> of sequential type is unconnected in block <comparator_block>.
+WARNING:Xst:2677 - Node <BLOCK_GENERATE[49].COMPARATOR_COLx/result_3> of sequential type is unconnected in block <comparator_block>.
+WARNING:Xst:2677 - Node <BLOCK_GENERATE[49].COMPARATOR_COLx/result_2> of sequential type is unconnected in block <comparator_block>.
+WARNING:Xst:2677 - Node <BLOCK_GENERATE[49].COMPARATOR_COLx/result_1> of sequential type is unconnected in block <comparator_block>.
+WARNING:Xst:2677 - Node <BLOCK_GENERATE[49].COMPARATOR_COLx/result_0> of sequential type is unconnected in block <comparator_block>.
+
+Mapping all equations...
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 5) on block comparator_block, actual ratio is 14.
+
+Final Macro Processing ...
+
+=========================================================================
+Final Register Report
+
+Macro Statistics
+# Registers                                            : 1761
+ Flip-Flops                                            : 1761
+
+=========================================================================
+
+=========================================================================
+*                           Partition Report                            *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Design Summary                             *
+=========================================================================
+
+Top Level Output File Name         : comparator_block.ngc
+
+Primitive and Black Box Usage:
+------------------------------
+# BELS                             : 3630
+#      GND                         : 1
+#      INV                         : 55
+#      LUT1                        : 49
+#      LUT2                        : 468
+#      LUT3                        : 1176
+#      LUT4                        : 1188
+#      MUXCY                       : 692
+#      VCC                         : 1
+# FlipFlops/Latches                : 1761
+#      FD                          : 1761
+# Clock Buffers                    : 1
+#      BUFGP                       : 1
+# IO Buffers                       : 607
+#      IBUF                        : 600
+#      OBUF                        : 7
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 6slx45csg324-3 
+
+
+Slice Logic Utilization: 
+ Number of Slice Registers:            1761  out of  54576     3%  
+ Number of Slice LUTs:                 2936  out of  27288    10%  
+    Number used as Logic:              2936  out of  27288    10%  
+
+Slice Logic Distribution: 
+ Number of LUT Flip Flop pairs used:   3047
+   Number with an unused Flip Flop:    1286  out of   3047    42%  
+   Number with an unused LUT:           111  out of   3047     3%  
+   Number of fully used LUT-FF pairs:  1650  out of   3047    54%  
+   Number of unique control sets:         1
+
+IO Utilization: 
+ Number of IOs:                         608
+ Number of bonded IOBs:                 608  out of    218   278% (*) 
+
+Specific Feature Utilization:
+ Number of BUFG/BUFGCTRLs:                1  out of     16     6%  
+
+WARNING:Xst:1336 -  (*) More than 100% of Device resources are used
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+Timing Report
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+-----------------------------------+------------------------+-------+
+Clock Signal                       | Clock buffer(FF name)  | Load  |
+-----------------------------------+------------------------+-------+
+clk                                | BUFGP                  | 1761  |
+-----------------------------------+------------------------+-------+
+
+Asynchronous Control Signals Information:
+----------------------------------------
+No asynchronous control signals found in this design
+
+Timing Summary:
+---------------
+Speed Grade: -3
+
+   Minimum period: 3.756ns (Maximum Frequency: 266.234MHz)
+   Minimum input arrival time before clock: 4.642ns
+   Maximum output required time after clock: 3.597ns
+   Maximum combinational path delay: No path found
+
+Timing Details:
+---------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'clk'
+  Clock period: 3.756ns (frequency: 266.234MHz)
+  Total number of paths / destination ports: 43718 / 1749
+-------------------------------------------------------------------------
+Delay:               3.756ns (Levels of Logic = 8)
+  Source:            BLOCK_GENERATE[31].COMPARATOR_COLx/result_0 (FF)
+  Destination:       BLOCK_GENERATE[32].COMPARATOR_PREV/index_6 (FF)
+  Source Clock:      clk rising
+  Destination Clock: clk rising
+
+  Data Path: BLOCK_GENERATE[31].COMPARATOR_COLx/result_0 to BLOCK_GENERATE[32].COMPARATOR_PREV/index_6
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FD:C->Q               3   0.447   0.879  BLOCK_GENERATE[31].COMPARATOR_COLx/result_0 (BLOCK_GENERATE[31].COMPARATOR_COLx/result_0)
+     LUT4:I1->O            1   0.205   0.000  BLOCK_GENERATE[32].COMPARATOR_PREV/Mcompar_operandZ[11]_operandA[11]_LessThan_1_o_lut<0> (BLOCK_GENERATE[32].COMPARATOR_PREV/Mcompar_operandZ[11]_operandA[11]_LessThan_1_o_lut<0>)
+     MUXCY:S->O            1   0.172   0.000  BLOCK_GENERATE[32].COMPARATOR_PREV/Mcompar_operandZ[11]_operandA[11]_LessThan_1_o_cy<0> (BLOCK_GENERATE[32].COMPARATOR_PREV/Mcompar_operandZ[11]_operandA[11]_LessThan_1_o_cy<0>)
+     MUXCY:CI->O           1   0.019   0.000  BLOCK_GENERATE[32].COMPARATOR_PREV/Mcompar_operandZ[11]_operandA[11]_LessThan_1_o_cy<1> (BLOCK_GENERATE[32].COMPARATOR_PREV/Mcompar_operandZ[11]_operandA[11]_LessThan_1_o_cy<1>)
+     MUXCY:CI->O           1   0.019   0.000  BLOCK_GENERATE[32].COMPARATOR_PREV/Mcompar_operandZ[11]_operandA[11]_LessThan_1_o_cy<2> (BLOCK_GENERATE[32].COMPARATOR_PREV/Mcompar_operandZ[11]_operandA[11]_LessThan_1_o_cy<2>)
+     MUXCY:CI->O           1   0.019   0.000  BLOCK_GENERATE[32].COMPARATOR_PREV/Mcompar_operandZ[11]_operandA[11]_LessThan_1_o_cy<3> (BLOCK_GENERATE[32].COMPARATOR_PREV/Mcompar_operandZ[11]_operandA[11]_LessThan_1_o_cy<3>)
+     MUXCY:CI->O           1   0.019   0.000  BLOCK_GENERATE[32].COMPARATOR_PREV/Mcompar_operandZ[11]_operandA[11]_LessThan_1_o_cy<4> (BLOCK_GENERATE[32].COMPARATOR_PREV/Mcompar_operandZ[11]_operandA[11]_LessThan_1_o_cy<4>)
+     MUXCY:CI->O          19   0.019   1.071  BLOCK_GENERATE[32].COMPARATOR_PREV/Mcompar_operandZ[11]_operandA[11]_LessThan_1_o_cy<5> (BLOCK_GENERATE[32].COMPARATOR_PREV/Mcompar_operandZ[11]_operandA[11]_LessThan_1_o_cy<5>)
+     INV:I->O              1   0.206   0.579  BLOCK_GENERATE[32].COMPARATOR_PREV/Mcompar_operandZ[11]_operandA[11]_LessThan_1_o_cy<5>_inv_INV_0 (BLOCK_GENERATE[32].COMPARATOR_PREV/Mcompar_operandZ[11]_operandA[11]_LessThan_1_o_cy<5>_inv)
+     FD:D                      0.102          BLOCK_GENERATE[32].COMPARATOR_PREV/index_6
+    ----------------------------------------
+    Total                      3.756ns (1.227ns logic, 2.529ns route)
+                                       (32.7% logic, 67.3% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'clk'
+  Total number of paths / destination ports: 43164 / 1761
+-------------------------------------------------------------------------
+Offset:              4.642ns (Levels of Logic = 9)
+  Source:            operands<384> (PAD)
+  Destination:       BLOCK_GENERATE[32].COMPARATOR_PREV/index_6 (FF)
+  Destination Clock: clk rising
+
+  Data Path: operands<384> to BLOCK_GENERATE[32].COMPARATOR_PREV/index_6
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O             6   1.222   0.992  operands_384_IBUF (operands_384_IBUF)
+     LUT4:I0->O            1   0.203   0.000  BLOCK_GENERATE[32].COMPARATOR_PREV/Mcompar_operandZ[11]_operandA[11]_LessThan_1_o_lut<0> (BLOCK_GENERATE[32].COMPARATOR_PREV/Mcompar_operandZ[11]_operandA[11]_LessThan_1_o_lut<0>)
+     MUXCY:S->O            1   0.172   0.000  BLOCK_GENERATE[32].COMPARATOR_PREV/Mcompar_operandZ[11]_operandA[11]_LessThan_1_o_cy<0> (BLOCK_GENERATE[32].COMPARATOR_PREV/Mcompar_operandZ[11]_operandA[11]_LessThan_1_o_cy<0>)
+     MUXCY:CI->O           1   0.019   0.000  BLOCK_GENERATE[32].COMPARATOR_PREV/Mcompar_operandZ[11]_operandA[11]_LessThan_1_o_cy<1> (BLOCK_GENERATE[32].COMPARATOR_PREV/Mcompar_operandZ[11]_operandA[11]_LessThan_1_o_cy<1>)
+     MUXCY:CI->O           1   0.019   0.000  BLOCK_GENERATE[32].COMPARATOR_PREV/Mcompar_operandZ[11]_operandA[11]_LessThan_1_o_cy<2> (BLOCK_GENERATE[32].COMPARATOR_PREV/Mcompar_operandZ[11]_operandA[11]_LessThan_1_o_cy<2>)
+     MUXCY:CI->O           1   0.019   0.000  BLOCK_GENERATE[32].COMPARATOR_PREV/Mcompar_operandZ[11]_operandA[11]_LessThan_1_o_cy<3> (BLOCK_GENERATE[32].COMPARATOR_PREV/Mcompar_operandZ[11]_operandA[11]_LessThan_1_o_cy<3>)
+     MUXCY:CI->O           1   0.019   0.000  BLOCK_GENERATE[32].COMPARATOR_PREV/Mcompar_operandZ[11]_operandA[11]_LessThan_1_o_cy<4> (BLOCK_GENERATE[32].COMPARATOR_PREV/Mcompar_operandZ[11]_operandA[11]_LessThan_1_o_cy<4>)
+     MUXCY:CI->O          19   0.019   1.071  BLOCK_GENERATE[32].COMPARATOR_PREV/Mcompar_operandZ[11]_operandA[11]_LessThan_1_o_cy<5> (BLOCK_GENERATE[32].COMPARATOR_PREV/Mcompar_operandZ[11]_operandA[11]_LessThan_1_o_cy<5>)
+     INV:I->O              1   0.206   0.579  BLOCK_GENERATE[32].COMPARATOR_PREV/Mcompar_operandZ[11]_operandA[11]_LessThan_1_o_cy<5>_inv_INV_0 (BLOCK_GENERATE[32].COMPARATOR_PREV/Mcompar_operandZ[11]_operandA[11]_LessThan_1_o_cy<5>_inv)
+     FD:D                      0.102          BLOCK_GENERATE[32].COMPARATOR_PREV/index_6
+    ----------------------------------------
+    Total                      4.642ns (2.000ns logic, 2.642ns route)
+                                       (43.1% logic, 56.9% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'clk'
+  Total number of paths / destination ports: 7 / 7
+-------------------------------------------------------------------------
+Offset:              3.597ns (Levels of Logic = 1)
+  Source:            BLOCK_GENERATE[49].COMPARATOR_COLx/index_6 (FF)
+  Destination:       index<6> (PAD)
+  Source Clock:      clk rising
+
+  Data Path: BLOCK_GENERATE[49].COMPARATOR_COLx/index_6 to index<6>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FD:C->Q               1   0.447   0.579  BLOCK_GENERATE[49].COMPARATOR_COLx/index_6 (BLOCK_GENERATE[49].COMPARATOR_COLx/index_6)
+     OBUF:I->O                 2.571          index_6_OBUF (index<6>)
+    ----------------------------------------
+    Total                      3.597ns (3.018ns logic, 0.579ns route)
+                                       (83.9% logic, 16.1% route)
+
+=========================================================================
+
+Cross Clock Domains Report:
+--------------------------
+
+Clock to Setup on destination clock clk
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+clk            |    3.756|         |         |         |
+---------------+---------+---------+---------+---------+
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 22.00 secs
+Total CPU time to Xst completion: 22.09 secs
+ 
+--> 
+
+Total memory usage is 253000 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :  133 (   0 filtered)
+Number of infos    :    1 (   0 filtered)
+
