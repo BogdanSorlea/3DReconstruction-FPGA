@@ -1,3 +1,7 @@
+work	"adder2.vhd"
+work	"adder3.vhd"
 work	"comparator.vhd"
-work	"comparator_block.vhd"
 work	"flipflop.vhd"
+work	"pipeadd3.vhd"
+work	"pipeline.vhd"
+work	"sad.vhd"

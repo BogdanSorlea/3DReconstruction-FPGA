@@ -37,8 +37,9 @@ entity pipeline is
 	);
 	
 	port(
-		left, right : in std_logic_vector(8 * (DR / 2) * (2 * R + 1) - 1 downto 0);
-		clk : in std_logic;
+		left, right: in std_logic_vector(8 * (2 * R + 1) - 1 downto 0);
+		--left, right : in std_logic_vector(8 * (DR / 2) * (2 * R + 1) - 1 downto 0);
+		clk, rst, start : in std_logic;
 		index : out std_logic_vector(6 downto 0)
 	);
 
@@ -51,6 +52,8 @@ architecture Behavioral of pipeline is
 	-- 14 bits if R=2 or R=3
 	constant ADDER3_RESULT_SIZE : integer := 10;
 	-- 10 bits for ADDER3
+	
+	type state_type is ( idle, initialShiftBoth, initialShiftRight, shiftLeft, shiftRight );
 
 	type line_array_7 is array(0 to DR/2-1) of std_logic_vector(6 downto 0);
 	type line_array_7_ex1 is array(1 to DR/2-1) of std_logic_vector(6 downto 0);
@@ -125,15 +128,163 @@ architecture Behavioral of pipeline is
 	signal COMPARATOR_index : line_array_7;
 	signal COMPARATOR_PREV_index : line_array_7_ex1;
 	signal PIPEADD3_col0_buf : std_logic_vector(11 downto 0);
+	
+	signal leftLine, rightLine : table_array_8;
+	signal leftLineCLK, rightLineCLK, leftLineCLKEN, rightLineCLKEN : std_logic;
+	
+	signal state, next_state: state_type;
+	signal initialShift, nextInitialShift: integer;
 
 begin
+
+	STATEMACHINE_SL: process (clk)
+	begin
+		if ( rising_edge(clk) ) then
+			if ( rst = '1' ) then
+				state <= idle;
+			else
+				state <= next_state;
+			end if;
+			
+			initialShift <= nextInitialShift;
+			
+		end if;
+	end process STATEMACHINE_SL;
+	
+	
+
+	STATEMACHINE_CL: process(state, start, initialShift)
+	begin
+		case (state) is	
+			when idle =>
+				if ( start = '1' ) then
+					next_state <= initialShiftBoth;
+				else
+					next_state <= idle;
+				end if;
+				
+				nextInitialShift <= 0;
+				
+				leftLineCLKEN <= '0';
+				rightLineCLKEN <= '0';
+			
+			when initialShiftBoth =>
+			
+				next_state <= initialShiftRight;
+				
+				nextInitialShift <= 1;
+				
+				leftLineCLKEN <= '1';
+				rightLineCLKEN <= '1';
+			
+			when initialShiftRight =>
+			
+				if ( initialShift < DR/2 ) then
+					next_state <= initialShiftRight;
+				else
+					next_state <= shiftRight;
+				end if;
+			
+				nextInitialShift <= initialShift + 1;
+				
+				leftLineCLKEN <= '0';
+				rightLineCLKEN <= '1';
+			
+			when shiftRight =>
+			
+				next_state <= shiftLeft;
+				
+				nextInitialShift <= 0;
+			
+				leftLineCLKEN <= '0';
+				rightLineCLKEN <= '1';
+			
+			when shiftLeft =>
+			
+				next_state <= shiftRight;
+				
+				nextInitialShift <= 0;
+				
+				leftLineCLKEN <= '1';
+				rightLineCLKEN <= '0';
+			
+		end case;
+	end process STATEMACHINE_CL;
+	
+	
+	leftLineCLK <= leftLineCLKEN and clk;
+	rightLineCLK <= rightLineCLKEN and clk;
+
 
 	COLUMN_ITERATION: for j in 0 to (DR / 2 - 1) generate
 		
 		SAD_LINE_ITERATION: for i in 0 to ((2 * R + 1) - 1) generate
+		
+			LINE_SHIFT_REGISTER_COL0: if ( j = 0 ) generate 
+		
+				SR_LEFT_COL0_FF: flipflop generic map (
+					N => 8
+				) port map(
+					d => left((i+1) * 8 - 1 downto i * 8),
+					clk => leftLineCLK,
+					q => leftLine(i)(j)
+				);
+				
+				SR_RIGHT_COLx_FF: flipflop generic map (
+					N => 8
+				) port map(
+					d => rightLine(i)(j+1),
+					clk => rightLineCLK,
+					q => rightLine(i)(j)
+				);
+			
+			end generate;
+			
+			LINE_SHIFT_REGISTER_COLx: if ( j > 0 and j < (DR/2 - 1) ) generate 
+		
+				SR_LEFT_COLx_FF: flipflop generic map (
+					N => 8
+				) port map(
+					d => leftLine(i)(j-1),
+					clk => leftLineCLK,
+					q => leftLine(i)(j)
+				);
+				
+				SR_RIGHT_COLx_FF: flipflop generic map (
+					N => 8
+				) port map(
+					d => rightLine(i)(j+1),
+					clk => rightLineCLK,
+					q => rightLine(i)(j)
+				);
+			
+			end generate;
+			
+			LINE_SHIFT_REGISTER_COLMAX: if ( j = (DR/2 - 1) ) generate 
+		
+				SR_LEFT_COLMAX_FF: flipflop generic map (
+					N => 8
+				) port map(
+					d => leftLine(i)(j-1),
+					clk => leftLineCLK,
+					q => leftLine(i)(j)
+				);
+				
+				SR_RIGHT_COLMAX_FF: flipflop generic map (
+					N => 8
+				) port map(
+					d => right((i+1) * 8 - 1 downto i * 8),
+					clk => rightLineCLK,
+					q => rightLine(i)(j)
+				);
+			
+			end generate;
+		
 			COMPUTE_SAD: sad port map(
-				leftOperand => left( (DR/2 * i * 8 + (j+1) * 8 - 1) downto (DR/2 * i * 8 + j * 8) ), 
-				rightOperand => right( (DR/2 * i * 8 + (j+1) * 8 - 1) downto (DR/2 * i * 8 + j * 8) ),
+				--leftOperand => left( (DR/2 * i * 8 + (j+1) * 8 - 1) downto (DR/2 * i * 8 + j * 8) ), 
+				--rightOperand => right( (DR/2 * i * 8 + (j+1) * 8 - 1) downto (DR/2 * i * 8 + j * 8) ),
+				leftOperand => leftLine(i)(j), 
+				rightOperand => rightLine(i)(j),
 				result => SAD_result(i)(j)
 			);
 		end generate;
@@ -199,7 +350,6 @@ begin
 		
 	end generate;
 	
-	--index <= (others => '0');
 	index <= COMPARATOR_index(COMPARATOR_index'right);
 
 end Behavioral;

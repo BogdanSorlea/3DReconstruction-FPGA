@@ -5,7 +5,7 @@
      behavior or data corruption.  It is strongly advised that
      users do not edit the contents of this file. -->
 <messages>
-<msg type="info" file="Xst" num="3010" delta="old" >&quot;<arg fmt="%s" index="1">/users/bogdan/desktop/d3reconstruction/stereoreconstructionpipeline/pipeline.vhd</arg>&quot; line <arg fmt="%d" index="2">188</arg>: Output port &lt;<arg fmt="%s" index="3">result</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">COLUMN_ITERATION[49].PIPEADD3_COLx.COMPARATOR_COLx</arg>&gt; is unconnected or connected to loadless signal.
+<msg type="info" file="Xst" num="3010" delta="old" >&quot;<arg fmt="%s" index="1">/users/bogdan/desktop/d3reconstruction/stereoreconstructionpipeline/pipeline.vhd</arg>&quot; line <arg fmt="%d" index="2">339</arg>: Output port &lt;<arg fmt="%s" index="3">result</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">COLUMN_ITERATION[49].PIPEADD3_COLx.COMPARATOR_COLx</arg>&gt; is unconnected or connected to loadless signal.
 </msg>
 
 <msg type="info" file="Xst" num="1767" delta="old" >HDL ADVISOR - Resource sharing has identified that some arithmetic operations in this design can share the same physical resources for reduced device utilization. For improved clock frequency you may try to disable resource sharing.
@@ -405,9 +405,6 @@
 </msg>
 
 <msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">COLUMN_ITERATION[49].PIPEADD3_COLx.COMPARATOR_COLx/result_0</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">pipeline</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="1336" delta="old" > (*) More than 100% of Device resources are used
 </msg>
 
 </messages>

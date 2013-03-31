@@ -199,6 +199,7 @@
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForProperties"/>
       <status xil_pn:value="OutOfDateForPredecessor"/>
       <status xil_pn:value="InputChanged"/>
       <outfile xil_pn:name="comparator_block_test_beh.prj"/>
@@ -210,6 +211,7 @@
     <transform xil_pn:end_ts="1364501190" xil_pn:in_ck="5573951474993132190" xil_pn:name="TRAN_ISimulateBehavioralModel" xil_pn:prop_ck="-825257548440521541" xil_pn:start_ts="1364501190">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForProperties"/>
       <status xil_pn:value="OutOfDateForPredecessor"/>
       <status xil_pn:value="OutOfDateForOutputs"/>
       <status xil_pn:value="OutputChanged"/>
@@ -244,7 +246,7 @@
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1364554911" xil_pn:in_ck="9096909767479950314" xil_pn:name="TRANEXT_xstsynthesize_spartan6" xil_pn:prop_ck="539032488960084609" xil_pn:start_ts="1364554829">
+    <transform xil_pn:end_ts="1364769017" xil_pn:in_ck="9096909767479950314" xil_pn:name="TRANEXT_xstsynthesize_spartan6" xil_pn:prop_ck="539032488960084609" xil_pn:start_ts="1364768905">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="WarningsGenerated"/>
       <status xil_pn:value="ReadyToRun"/>
